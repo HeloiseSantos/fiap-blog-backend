@@ -1,0 +1,15 @@
+{
+  "name": "fiap-blog-backend",
+  "version": "1.0.0",
+  "description": "Api desenvolvida para o Tech Challenge da fase 2 do curso de pós graduação em desenvolvimento full stack na FIAP.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Heloíse Silva Santos e \u0016Jonas de Andrade Zuazo Moreira",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0"
+  }
+}
