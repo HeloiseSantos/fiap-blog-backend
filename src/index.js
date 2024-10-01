@@ -18,6 +18,11 @@ app.get('/', async (req, res) => {
     return res.send(posts);
 });
 
+app.get('/:id', async (req, res) => {
+    const post = await Post.findById(req.params.id);
+    return res.send(post);
+});
+
 app.post('/', async (req, res) => {
     const post = new Post({
         title: req.body.title,
