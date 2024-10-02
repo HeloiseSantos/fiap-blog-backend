@@ -13,17 +13,17 @@ const Post = mongoose.model('Post', {
     updateDate: String
 });
 
-app.get('/', async (req, res) => {
+app.get('/posts', async (req, res) => {
     const posts = await Post.find();
     return res.send(posts);
 });
 
-app.get('/:id', async (req, res) => {
+app.get('/posts/:id', async (req, res) => {
     const post = await Post.findById(req.params.id);
     return res.send(post);
 });
 
-app.post('/', async (req, res) => {
+app.post('/posts', async (req, res) => {
     const post = new Post({
         title: req.body.title,
         author: req.body.author,
@@ -36,7 +36,7 @@ app.post('/', async (req, res) => {
     return res.send(post);
 });
 
-app.put('/:id', async (req, res) => {
+app.put('/posts/:id', async (req, res) => {
     const post = await Post.findByIdAndUpdate(req.params.id, {
         title: req.body.title,
         author: req.body.author,
@@ -49,7 +49,7 @@ app.put('/:id', async (req, res) => {
     return res.send(post);
 });
 
-app.delete('/:id', async (req, res) => {
+app.delete('/posts/:id', async (req, res) => {
     const post = await Post.findByIdAndDelete(req.params.id);
     return res.send(post);
 });
