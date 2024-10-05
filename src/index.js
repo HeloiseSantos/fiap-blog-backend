@@ -62,8 +62,10 @@ app.delete('/posts/:id', async (req, res) => {
     return res.send(post);
 });
 
-app.listen(port, () => {
-    mongoose.connect('mongodb+srv://heloisehssantos:ICbxVAGGRlZSLHgP@fiap-blog-backend.rl2oe.mongodb.net/?retryWrites=true&w=majority&appName=fiap-blog-backend');
-
-    console.log(`App running on port ${port}`);
-});
+mongoose.connect(
+    'mongodb+srv://heloisehssantos:ICbxVAGGRlZSLHgP@fiap-blog-backend.rl2oe.mongodb.net/?retryWrites=true&w=majority&appName=fiap-blog-backend'
+)
+.then(() => {
+    app.listen(port);
+})
+.catch((err) => console.log(err));
