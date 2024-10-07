@@ -15,14 +15,6 @@ app.use(express.json());
 
 const port = 3000;
 
-// const Post = mongoose.model('Post', { 
-//     title: String,
-//     author: String,
-//     description: String,
-//     createDate: String,
-//     updateDate: String
-// });
-
 app.get('/posts', async (req, res) => {
     const posts = await Post.find();
     return res.send(posts);
