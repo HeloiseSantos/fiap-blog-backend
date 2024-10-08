@@ -20,7 +20,6 @@ router.post('/', async (req, res) => {
         createDate: req.body.createDate,
         updateDate: req.body.updateDate
     });
-
     await post.save();
     return res.send(post);
 });
