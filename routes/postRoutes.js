@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { body, validationResult } = require("express-validator");
 
 const Post = require("../models/Post");
 
@@ -29,24 +30,34 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
-  try {
-    const post = new Post({
-      title: req.body.title,
-      author: req.body.author,
-      description: req.body.description,
-      createDate: req.body.createDate,
-      updateDate: req.body.updateDate,
-    });
+router.post(
+  "/",
+  [body("createDate").isDate(), body("updateDate").isDate()],
+  async (req, res) => {
+    try {
+      const result = validationResult(req);
 
-    await post.save();
+      if (!result.isEmpty()) {
+        return res.status(400).json({ errors: result.array() });
+      }
 
-    return res.status(201).json(post);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json(error);
+      const post = new Post({
+        title: req.body.title,
+        author: req.body.author,
+        description: req.body.description,
+        createDate: req.body.createDate,
+        updateDate: req.body.updateDate,
+      });
+
+      await post.save();
+
+      return res.status(201).json(post);
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json(error);
+    }
   }
-});
+);
 
 router.put("/:id", async (req, res) => {
   try {
