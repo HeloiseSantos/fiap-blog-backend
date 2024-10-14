@@ -44,9 +44,9 @@ exports.createPost = async (req, res) => {
       updateDate: req.body.updateDate,
     });
 
-    await post.save();
+    const savedPost = await post.save();
 
-    return res.status(201).json(post);
+    return res.status(201).json(savedPost);
   } catch (error) {
     console.error(error);
     return res.status(500).json(error);
