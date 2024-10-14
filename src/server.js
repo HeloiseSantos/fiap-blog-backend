@@ -8,6 +8,8 @@ mongoose
     "mongodb+srv://heloisehssantos:ICbxVAGGRlZSLHgP@fiap-blog-backend.rl2oe.mongodb.net/?retryWrites=true&w=majority&appName=fiap-blog-backend"
   )
   .then(() => {
-    app.listen(port);
+    app.listen(port, () => {
+      console.log("Server listening in port ${port}");
+    });
   })
   .catch((err) => console.log(err));
