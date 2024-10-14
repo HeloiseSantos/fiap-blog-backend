@@ -24,4 +24,4 @@ jobs:
           docker push $DOCKER_USERNAME/fiap-blog-backend:latest
 
       - name: Run automated tests
-        run: npm test
+        run: docker run $DOCKER_USERNAME/fiap-blog-backend:latest npm test
