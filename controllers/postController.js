@@ -55,6 +55,12 @@ exports.createPost = async (req, res) => {
 
 exports.updatePost = async (req, res) => {
   try {
+    const result = validationResult(req);
+
+    if (!result.isEmpty()) {
+      return res.status(400).json({ errors: result.array() });
+    }
+
     const post = await Post.findByIdAndUpdate(
       req.params.id,
       {
