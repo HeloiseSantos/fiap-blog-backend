@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const Post = require("../models/Post");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 
-// Mock de conexão com o banco de dados para testes
+// Mock database connection for testing
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
   const mongoUri = mongoServer.getUri();
@@ -12,20 +12,20 @@ beforeAll(async () => {
   await mongoose.connect(mongoUri);
 });
 
-// Limpa o banco de dados após cada teste
+// Clear the database after each test
 afterEach(async () => {
   await Post.deleteMany({});
 });
 
-// Desconecta do banco de dados após todos os testes
+// Disconnect from database after all tests
 afterAll(async () => {
   await mongoose.disconnect();
   await mongoServer.stop();
 });
 
 describe("POST /posts", () => {
-  it("Deve criar um novo post", async () => {
-    // Cria um post no banco de dados
+  it("Should create a new post", async () => {
+    // Creates a post in the database
     const post = new Post({
       title: "Título do Post",
       author: "Autor do Post",
