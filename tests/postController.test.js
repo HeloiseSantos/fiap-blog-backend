@@ -376,3 +376,77 @@ describe("updatePost", () => {
     });
   });
 });
+
+describe("deletePost", () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it("should delete a post and return status 204", async () => {
+    // ARRANGE
+    const req = {
+      params: { id: "123" },
+    };
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+
+    // Mock Post.findByIdAndDelete to resolve successfully
+    Post.findByIdAndDelete.mockResolvedValue({});
+
+    // ACT
+    await deletePost(req, res);
+
+    // ASSERT
+    expect(Post.findByIdAndDelete).toHaveBeenCalledWith(req.params.id);
+    expect(res.status).toHaveBeenCalledWith(204);
+    expect(res.json).toHaveBeenCalledWith();
+  });
+
+  it("should return 404 if the post to delete is not found", async () => {
+    // ARRANGE
+    const req = {
+      params: { id: "nonexistent_id" },
+    };
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+
+    // Mock Post.findByIdAndDelete to return null (post not found)
+    Post.findByIdAndDelete.mockResolvedValue(null);
+
+    // ACT
+    await deletePost(req, res);
+
+    // ASSERT
+    expect(Post.findByIdAndDelete).toHaveBeenCalledWith(req.params.id);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({
+      message: "There is no post with the requested id.",
+    });
+  });
+
+  it("should return 500 if an error occurs during deletion", async () => {
+    // ARRANGE
+    const req = {
+      params: { id: "123" },
+    };
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+
+    // Mock Post.findByIdAndDelete to throw an error
+    Post.findByIdAndDelete.mockRejectedValue(new Error("Deletion error"));
+
+    // ACT
+    await deletePost(req, res);
+
+    // ASSERT
+    expect(Post.findByIdAndDelete).toHaveBeenCalledWith(req.params.id);
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith(expect.any(Error));
+  });
+});

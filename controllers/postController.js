@@ -90,7 +90,13 @@ exports.updatePost = async (req, res) => {
 
 exports.deletePost = async (req, res) => {
   try {
-    await Post.findByIdAndDelete(req.params.id);
+    const post = await Post.findByIdAndDelete(req.params.id);
+
+    if (!post) {
+      return res
+        .status(404)
+        .json({ message: "There is no post with the requested id." });
+    }
 
     return res.status(204).json();
   } catch (error) {
