@@ -22,3 +22,6 @@ jobs:
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker build -t $DOCKER_USERNAME/fiap-blog-backend:latest .
           docker push $DOCKER_USERNAME/fiap-blog-backend:latest
+
+      - name: Run automated tests
+        run: npm test
