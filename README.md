@@ -84,5 +84,3 @@ Grupo 31, composto por:
 
 - Heloíse Silva Santos - https://github.com/HeloiseSantos
 - Jonas de Andrade Zuazo Moreira - https://github.com/jmoreira7
-
-Para mais detalhes sobre os endpoints e sua implementação, visite a documentação da API, disponível em: .
