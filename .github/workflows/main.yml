@@ -3,7 +3,7 @@ name: CI/CD for FIAP Blog Backend
 on:
   push:
     branches:
-      - "**"
+      - "master"
 
 jobs:
   build:
