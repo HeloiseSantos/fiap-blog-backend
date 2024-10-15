@@ -6,6 +6,7 @@ professores a possibilidade de criar, editar, listar e excluir postagens.
 ## 🛠️ Tecnologias utilizadas
 
 - Node.js
+- Express
 - Mongoose
 - MongoDB Atlas
 - Docker
