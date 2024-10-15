@@ -74,7 +74,7 @@ npm test
 
 A API está implantada e disponível para uso no seguinte endereço:
 
-[https://fiap-blog-backend-latest.onrender.com]
+https://fiap-blog-backend-latest.onrender.com
 
 Você pode utilizar este link para acessar os endpoints da API diretamente ou através de ferramentas como o [Insomnia](https://insomnia.rest/) ou [Postman](https://www.postman.com/)
 
