@@ -2,10 +2,10 @@
   "name": "fiap-blog-backend",
   "version": "1.0.0",
   "description": "Api desenvolvida para o Tech Challenge da fase 2 do curso de pós graduação em desenvolvimento full stack na FIAP.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.js"
+    "test": "jest --coverage",
+    "start": "nodemon src/server.js"
   },
   "author": "Heloíse Silva Santos e \u0016Jonas de Andrade Zuazo Moreira",
   "license": "ISC",
@@ -15,5 +15,10 @@
     "express-validator": "^7.2.0",
     "mongoose": "^8.7.0",
     "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "mongodb-memory-server": "^10.1.2",
+    "supertest": "^7.0.0"
   }
 }

@@ -1,9 +1,9 @@
-name: Build and Push Docker Image
+name: CI/CD for FIAP Blog Backend
 
 on:
   push:
-    branchs:
-      - master
+    branches:
+      - "**"
 
 jobs:
   build:
@@ -16,6 +16,17 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Automated Tests
+        run: npm test
 
       - name: Build and Push Docker Image
         run: |
