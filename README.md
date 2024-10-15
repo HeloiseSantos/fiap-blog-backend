@@ -10,6 +10,7 @@ professores a possibilidade de criar, editar, listar e excluir postagens.
 - Mongoose
 - MongoDB Atlas
 - Docker
+- Render
 - Jest
 
 ## 💻 Pré-requisitos
