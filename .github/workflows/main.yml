@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: CI/CD for FIAP Blog Backend
 
 on:
   push:
@@ -17,11 +17,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Automated Tests
+        run: npm test
+
       - name: Build and Push Docker Image
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker build -t $DOCKER_USERNAME/fiap-blog-backend:latest .
           docker push $DOCKER_USERNAME/fiap-blog-backend:latest
-
-      - name: Run automated tests
-        run: docker run $DOCKER_USERNAME/fiap-blog-backend:latest npm test
