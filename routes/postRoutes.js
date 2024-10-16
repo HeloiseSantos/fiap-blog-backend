@@ -4,6 +4,8 @@ const postController = require("../controllers/postController");
 
 router.get("/", postController.getPosts);
 
+router.get("/search", postController.searchPosts);
+
 router.get("/:id", postController.getPostById);
 
 router.post(
