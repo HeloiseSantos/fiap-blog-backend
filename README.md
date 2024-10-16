@@ -47,6 +47,7 @@ npm start
 ```
 
 Com o projeto rodando na porta 3000 [http://localhost:3001], é possível utilizá-lo com ferramentas de acesso a APIs REST, como o [Insomnia](https://insomnia.rest/download) ou [Postman](https://www.postman.com/).
+A collection com as requisições prontas estão disponível no projeto no seguinte diretório: `collection/collection-fiap-blog-backend`. Basta baixar o arquivo e importá-lo na ferramenta de preferência.
 
 Rotas da aplicação:
 
