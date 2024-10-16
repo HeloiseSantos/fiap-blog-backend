@@ -19,6 +19,7 @@ exports.searchPosts = async (req, res) => {
       return res.status(400).json({ message: "No search string provided." });
     }
 
+    // Regex to case insensitive
     const regex = new RegExp(searchString, "i");
 
     const posts = await Post.find({
