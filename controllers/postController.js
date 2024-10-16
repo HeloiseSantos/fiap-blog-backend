@@ -11,6 +11,28 @@ exports.getPosts = async (req, res) => {
   }
 };
 
+exports.searchPosts = async (req, res) => {
+  try {
+    const searchString = req.query.q;
+
+    if (!searchString) {
+      return res.status(400).json({ message: "No search string provided." });
+    }
+
+    // Regex to case insensitive
+    const regex = new RegExp(searchString, "i");
+
+    const posts = await Post.find({
+      $or: [{ title: regex }, { description: regex }],
+    });
+
+    return res.status(200).json(posts);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json(error);
+  }
+};
+
 exports.getPostById = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
