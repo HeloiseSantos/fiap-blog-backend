@@ -87,5 +87,3 @@ Grupo 31, composto por:
 
 - Heloíse Silva Santos - https://github.com/HeloiseSantos
 - Jonas de Andrade Zuazo Moreira - https://github.com/jmoreira7
-
-Teste Github Actions
